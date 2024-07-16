@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="flex flex-column flex-wrap justify-around p-5 bg-header">
+      <div className="flex flex-column flex-wrap justify-between">
         {/* Logo Image */}
         <Image src={Logo} alt="Logo" />
 
