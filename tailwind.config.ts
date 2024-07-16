@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         header: "#262262",
+        borderBox: "#00C89C",
       },
     },
   },
