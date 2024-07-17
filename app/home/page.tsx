@@ -16,9 +16,12 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-between bg-header h-screen">
       <div className="flex flex-col gap-10 ml-10 p-5">
+        {/* Header  */}
         <Header></Header>
-        <div className="flex flex-col text-center font-bold text-white gap-10">
-          <span className="">
+
+        {/* Translate and history */}
+        <div className="flex flex-col font-bold text-white gap-10">
+          <span className="flex justify-center">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
           <div className="flex flex-wrap justify-center">
@@ -32,9 +35,18 @@ export default function Home() {
             </div>
             <Box placeholder="คำแปล"></Box>
           </div>
+
+          <div className="flex flex-wrap justify-center">
+            <span className="w-[540px]">
+              <History></History>
+            </span>
+            <div className="flex flex-col justify-center w-20"></div>
+            <span className="w-[540px]"></span>
+          </div>
         </div>
-        <History></History>
       </div>
+
+      {/* Solution */}
       <div className="flex flex-row justify-center p-10">
         <Button
           logo={Book}
