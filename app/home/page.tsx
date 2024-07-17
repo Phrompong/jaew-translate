@@ -1,8 +1,6 @@
 "use client";
-
 import Header from "../components/header";
 import Box from "../components/box";
-import History from "../components/history";
 import Button from "../components/button";
 import Book from "../../public/book.png";
 import Image from "next/image";
@@ -12,14 +10,14 @@ import ContactModal from "../components/modals/contact";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
-  const [isContactModalOpen, setIsContactModalOpen] = useState(true);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("name", "phrompong khagtes");
   }, []);
 
   const handleSolutionClicked = () => {
-    alert("Contact Us");
+    setIsContactModalOpen(true);
   };
 
   const handleOnValueChanged = (event: any) => {
@@ -131,6 +129,10 @@ export default function Home() {
     return setting[value] || value;
   };
 
+  const handleClickedCloseModal = () => {
+    setIsContactModalOpen(false);
+  };
+
   return (
     <div className="flex flex-col justify-between bg-header h-screen">
       <div className="flex flex-col gap-10 ml-10 p-5">
@@ -147,6 +149,8 @@ export default function Home() {
               onChange={handleOnValueChanged}
               placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"
               bgColor="bg-header"
+              width="540px"
+              height="240px"
             ></Box>
             <div className="flex flex-col justify-center">
               <Image
@@ -160,6 +164,8 @@ export default function Home() {
               value={translated}
               readonly={true}
               bgColor="bg-translated"
+              width="540px"
+              height="240px"
             ></Box>
           </div>
 
@@ -180,7 +186,9 @@ export default function Home() {
         ></Button>
       </div>
 
-      <ContactModal></ContactModal>
+      {isContactModalOpen && (
+        <ContactModal onClick={handleClickedCloseModal}></ContactModal>
+      )}
     </div>
   );
 }
