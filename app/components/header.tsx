@@ -6,11 +6,10 @@ import Heart from "../../public/heart.png";
 import Button from "./button";
 import Image from "next/image";
 
-export default function Header() {
-  const handleContactClicked = () => {
-    alert("Contact Us");
-  };
-
+interface ModalProps {
+  onClick?: any;
+}
+const Header: React.FC<ModalProps> = ({ onClick }) => {
   const handleSupportClicked = () => {
     alert("Support Us");
   };
@@ -23,11 +22,7 @@ export default function Header() {
 
         {/* Contact Us / Support Us */}
         <div className="flex flex-column gap-5">
-          <Button
-            logo={Phone}
-            text="Contact Us"
-            onClick={handleContactClicked}
-          ></Button>
+          <Button logo={Phone} text="Contact Us" onClick={onClick}></Button>
           <Button
             logo={Heart}
             text="Support Us"
@@ -37,4 +32,6 @@ export default function Header() {
       </div>
     </>
   );
-}
+};
+
+export default Header;

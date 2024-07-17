@@ -6,19 +6,17 @@ import Book from "../../public/book.png";
 import Image from "next/image";
 import IconTranslate from "../../public/icon-translate.png";
 import { useEffect, useState } from "react";
+import SolutionModal from "../components/modals/solution";
 import ContactModal from "../components/modals/contact";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
+  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("name", "phrompong khagtes");
   }, []);
-
-  const handleSolutionClicked = () => {
-    setIsContactModalOpen(true);
-  };
 
   const handleOnValueChanged = (event: any) => {
     const value = event.target.value;
@@ -129,7 +127,19 @@ export default function Home() {
     return setting[value] || value;
   };
 
-  const handleClickedCloseModal = () => {
+  const handleSolutionClicked = () => {
+    setIsSolutionModalOpen(true);
+  };
+
+  const handleClickedCloseSolutionModal = () => {
+    setIsSolutionModalOpen(false);
+  };
+
+  const handleContactClicked = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const handleClickedCloseContactModal = () => {
     setIsContactModalOpen(false);
   };
 
@@ -137,7 +147,7 @@ export default function Home() {
     <div className="flex flex-col justify-between bg-header h-screen">
       <div className="flex flex-col gap-10 ml-10 p-5">
         {/* Header  */}
-        <Header></Header>
+        <Header onClick={handleContactClicked}></Header>
 
         {/* Translate and history */}
         <div className="flex flex-col font-bold text-white gap-10">
@@ -186,8 +196,14 @@ export default function Home() {
         ></Button>
       </div>
 
+      {isSolutionModalOpen && (
+        <SolutionModal
+          onClick={handleClickedCloseSolutionModal}
+        ></SolutionModal>
+      )}
+
       {isContactModalOpen && (
-        <ContactModal onClick={handleClickedCloseModal}></ContactModal>
+        <ContactModal onClick={handleClickedCloseContactModal}></ContactModal>
       )}
     </div>
   );
