@@ -5,6 +5,8 @@ import Box from "../components/box";
 import History from "../components/history";
 import Button from "../components/button";
 import Book from "../../public/book.png";
+import Image from "next/image";
+import IconTranslate from "../../public/icon-translate.png";
 
 export default function Home() {
   const handleSolutionClicked = () => {
@@ -19,8 +21,15 @@ export default function Home() {
           <span className="">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
-          <div className="flex flex-wrap justify-between">
+          <div className="flex flex-wrap justify-center">
             <Box placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"></Box>
+            <div className="flex flex-col justify-center">
+              <Image
+                src={IconTranslate}
+                alt="arrow"
+                className="flex flex-col justify-center w-20 h-20"
+              ></Image>
+            </div>
             <Box placeholder="คำแปล"></Box>
           </div>
         </div>

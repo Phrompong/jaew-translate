@@ -19,7 +19,7 @@ export default function Header() {
     <>
       <div className="flex flex-column flex-wrap justify-between">
         {/* Logo Image */}
-        <Image src={Logo} alt="Logo" />
+        <Image src={Logo} className="h-10" alt="Logo" />
 
         {/* Contact Us / Support Us */}
         <div className="flex flex-column gap-5">
