@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
   return (
     <button
       type="button"
-      className="flex flex-column text-white border-2 p-2 rounded-full gap-2 text-center items-center"
+      className="flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center"
       onClick={onClick}
     >
       <Image src={logo} alt="Logo" />

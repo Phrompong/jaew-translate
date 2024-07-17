@@ -2,7 +2,7 @@ interface BoxProps {
   placeholder: string;
 }
 
-const Button: React.FC<BoxProps> = ({ placeholder }) => {
+const Box: React.FC<BoxProps> = ({ placeholder }) => {
   return (
     <>
       <textarea
@@ -13,4 +13,4 @@ const Button: React.FC<BoxProps> = ({ placeholder }) => {
   );
 };
 
-export default Button;
+export default Box;
