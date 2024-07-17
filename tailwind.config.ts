@@ -16,6 +16,8 @@ const config: Config = {
       colors: {
         header: "#262262",
         borderBox: "#00C89C",
+        translated: "#343A40",
+        modal: "#212529",
       },
     },
   },
