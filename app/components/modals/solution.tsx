@@ -17,7 +17,7 @@ const SolutionModal: React.FC<ModalProps> = ({ onClick }) => {
           <div className="flex flex-col border w-[60%] p-10 rounded-lg bg-modal gap-10">
             <div className="ml-[45%]">
               <div className="flex flex-row justify-between">
-                <span>วิธีใช้งาน</span>
+                <span className="text-lg">วิธีใช้งาน</span>
                 <span>
                   <Image
                     className="cursor-pointer"
@@ -31,12 +31,12 @@ const SolutionModal: React.FC<ModalProps> = ({ onClick }) => {
 
             <div className="flex flex-row border p-10 gap-10 rounded-lg bg-translated">
               <div className="grid grid-cols-[1fr,7%,1fr] gap-2">
-                <span>
+                <span className="text-sm">
                   1. คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษา
                   ทั้งภาษาไทย หรือภาษาอังกฤษลงในช่อง
                 </span>
                 <span></span>
-                <span>
+                <span className="text-sm">
                   2. แจ๋วจะทำการแปลเป็นคำที่ถูกต้องให้ และสามารถนำไปใช้ได้เลย
                 </span>
 
