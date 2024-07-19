@@ -256,7 +256,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-header h-screen">
+    <div className="flex flex-col justify-between bg-header desktop:h-screen tablet:w-[100%]">
       <div className="flex flex-col gap-10">
         {/* Header  */}
         <Header
@@ -265,7 +265,7 @@ export default function Home() {
         ></Header>
 
         {/* Translate and history desktop */}
-        <div className="flex flex-col font-bold text-white gap-10 md:hidden lg:flex">
+        <div className="flex flex-col font-bold text-white gap-10 tablet:hidden desktop:flex">
           <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
@@ -302,7 +302,7 @@ export default function Home() {
         </div>
 
         {/* Translate and history tablet */}
-        <div className="flex flex-col font-bold text-white gap-10 md:flex lg:hidden">
+        <div className="flex flex-col font-bold text-white gap-10 tablet:flex desktop:hidden">
           <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
