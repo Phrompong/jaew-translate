@@ -1,8 +1,6 @@
 "use client";
 
-import Box from "../box";
 import Image from "next/image";
-import IconTranslate from "../../../public/icon-translate.png";
 import Close from "../../../public/close.png";
 import PhoneModal from "../../../public/phone-modal.png";
 import Line from "../../../public/line.png";
@@ -19,22 +17,18 @@ const ContactModal: React.FC<ModalProps> = ({ onClick }) => {
       <div className="relative top-[20%]">
         <div className="flex justify-center">
           <div className="flex flex-col border w-[40%] p-10 rounded-lg bg-modal gap-10">
-            <div className="ml-[45%]">
-              <div className="flex flex-row justify-between">
-                <span>Contact Us</span>
-                <span>
-                  <Image
-                    className="cursor-pointer"
-                    src={Close}
-                    alt="close"
-                    onClick={onClick}
-                  ></Image>
-                </span>
-              </div>
+            <div className="flex flex-row justify-between ml-[40%]">
+              <span className="text-lg">Contact Us</span>
+              <Image
+                className="cursor-pointer w-4 h-4"
+                src={Close}
+                alt="close"
+                onClick={onClick}
+              ></Image>
             </div>
 
             {/* Content */}
-            <div className="grid grid-cols-2 justify-items-center gap-2">
+            <div className="grid grid-cols-2 justify-items-center gap-2 text-wrap">
               {[
                 {
                   image: PhoneModal,
@@ -64,13 +58,12 @@ const ContactModal: React.FC<ModalProps> = ({ onClick }) => {
                     className="flex flex-col items-center border-2 p-5 rounded-lg gap-3 bg-translated w-[100%]"
                   >
                     <Image
-                      className="cursor-pointer"
+                      className="cursor-pointer w-8 h-8"
                       src={obj.image}
                       alt="phone"
-                      width={30}
                     ></Image>
-                    <div>{obj.title}</div>
-                    <div>{obj.content}</div>
+                    <span className="font-normal text-base">{obj.title}</span>
+                    <span className="text-sm">{obj.content}</span>
                   </div>
                 );
               })}

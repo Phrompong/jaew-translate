@@ -8,15 +8,22 @@ import IconTranslate from "../../public/icon-translate.png";
 import { useEffect, useState } from "react";
 import SolutionModal from "../components/modals/solution";
 import ContactModal from "../components/modals/contact";
+import SupportModal from "../components/modals/support";
+import axios from "axios";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
   const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("name", "phrompong khagtes");
+    addView();
   }, []);
+
+  const addView = async () => {
+    await axios.patch("http://localhost:3000/views/1");
+  };
 
   const handleOnValueChanged = (event: any) => {
     const value = event.target.value;
@@ -143,15 +150,26 @@ export default function Home() {
     setIsContactModalOpen(false);
   };
 
+  const handleSupportClicked = () => {
+    setIsSupportModalOpen(true);
+  };
+
+  const handleClickedCloseSupportModal = () => {
+    setIsSupportModalOpen(false);
+  };
+
   return (
     <div className="flex flex-col justify-between bg-header h-screen">
-      <div className="flex flex-col gap-10 ml-10 p-5">
+      <div className="flex flex-col gap-10">
         {/* Header  */}
-        <Header onClick={handleContactClicked}></Header>
+        <Header
+          onClick={handleContactClicked}
+          supportOnClick={handleSupportClicked}
+        ></Header>
 
         {/* Translate and history */}
         <div className="flex flex-col font-bold text-white gap-10">
-          <span className="flex justify-center">
+          <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
           <div className="flex flex-wrap justify-center">
@@ -204,6 +222,10 @@ export default function Home() {
 
       {isContactModalOpen && (
         <ContactModal onClick={handleClickedCloseContactModal}></ContactModal>
+      )}
+
+      {isSupportModalOpen && (
+        <SupportModal onClick={handleClickedCloseSupportModal}></SupportModal>
       )}
     </div>
   );

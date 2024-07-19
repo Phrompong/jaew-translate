@@ -8,15 +8,12 @@ import Image from "next/image";
 
 interface ModalProps {
   onClick?: any;
+  supportOnClick?: any;
 }
-const Header: React.FC<ModalProps> = ({ onClick }) => {
-  const handleSupportClicked = () => {
-    alert("Support Us");
-  };
-
+const Header: React.FC<ModalProps> = ({ onClick, supportOnClick }) => {
   return (
     <>
-      <div className="flex flex-column flex-wrap justify-between">
+      <div className="flex flex-column flex-wrap justify-between bg-header shadow-xl p-5">
         {/* Logo Image */}
         <Image src={Logo} className="h-10" alt="Logo" />
 
@@ -26,7 +23,7 @@ const Header: React.FC<ModalProps> = ({ onClick }) => {
           <Button
             logo={Heart}
             text="Support Us"
-            onClick={handleSupportClicked}
+            onClick={supportOnClick}
           ></Button>
         </div>
       </div>
