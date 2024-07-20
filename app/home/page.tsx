@@ -256,7 +256,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-header desktop:h-screen tablet:w-[100%]">
+    <div className="flex flex-col justify-between desktop:h-screen tablet:w-[100%]">
       <div className="flex flex-col gap-10">
         {/* Header  */}
         <Header
@@ -265,7 +265,7 @@ export default function Home() {
         ></Header>
 
         {/* Translate and history desktop */}
-        <div className="flex flex-col font-bold text-white gap-10 tablet:hidden desktop:flex">
+        <div className="flex flex-col font-bold text-white gap-10 desktop:flex tablet:hidden mobile:hidden">
           <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
@@ -302,7 +302,7 @@ export default function Home() {
         </div>
 
         {/* Translate and history tablet */}
-        <div className="flex flex-col font-bold text-white gap-10 tablet:flex desktop:hidden">
+        <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:flex mobile:hidden">
           <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
@@ -335,6 +335,43 @@ export default function Home() {
             <span className="w-[540px]">{/* <History></History> */}</span>
             <div className="flex flex-col justify-center w-20"></div>
             <span className="w-[540px]"></span>
+          </div>
+        </div>
+
+        {/* Translate and history mobile */}
+        <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:hidden mobile:flex">
+          <span className="flex justify-center text-xl">
+            แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
+          </span>
+          <div className="flex flex-col flex-wrap content-center">
+            <Box
+              onChange={handleOnValueChanged}
+              placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"
+              bgColor="bg-header"
+              width="320px"
+              height="240px"
+            ></Box>
+            <div className="flex flex-row justify-center">
+              <Image
+                src={IconTranslateTablet}
+                alt="arrow"
+                className="flex flex-col justify-center w-20 h-20"
+              ></Image>
+            </div>
+            <Box
+              placeholder="คำแปล"
+              value={translated}
+              readonly={true}
+              bgColor="bg-translated"
+              width="320px"
+              height="240px"
+            ></Box>
+          </div>
+
+          <div className="flex flex-wrap justify-center">
+            <span className="w-[320px]">{/* <History></History> */}</span>
+            <div className="flex flex-col justify-center w-20"></div>
+            <span className="w-[320px]"></span>
           </div>
         </div>
       </div>

@@ -13,9 +13,9 @@ interface ModalProps {
 const Header: React.FC<ModalProps> = ({ onClick, supportOnClick }) => {
   return (
     <>
-      <div className="flex flex-column flex-wrap justify-between bg-header shadow-xl p-5">
+      <div className="flex flex-column justify-between self-auto bg-header shadow-xl p-5 w-[100%] gap-2 content-center">
         {/* Logo Image */}
-        <Image src={Logo} className="h-10" alt="Logo" />
+        <Image src={Logo} className="h-10 w-13" alt="Logo" />
 
         {/* Contact Us / Support Us */}
         <div className="flex flex-column gap-5">

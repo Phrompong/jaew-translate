@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={font.className}>
+    <html className={`${font.className} bg-header w-screen`}>
       <body>{children}</body>
     </html>
   );
