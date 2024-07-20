@@ -340,8 +340,9 @@ export default function Home() {
 
         {/* Translate and history mobile */}
         <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:hidden mobile:flex">
-          <span className="flex justify-center text-xl">
-            แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
+          <span className="flex justify-center text-md text-center">
+            แก้ไขภาษาอังกฤษเป็นไทย หรือ <br />
+            จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
           <div className="flex flex-col flex-wrap content-center">
             <Box
