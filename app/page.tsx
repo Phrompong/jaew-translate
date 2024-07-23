@@ -1,113 +1,405 @@
+"use client";
+import Header from "./components/header";
+import Box from "./components/box";
+import Button from "./components/button";
+import Book from "../public/book.png";
 import Image from "next/image";
+import IconTranslate from "../public/icon-translate.png";
+import IconTranslateTablet from "../public/icon-translate-tablet.png";
+import { useEffect, useState } from "react";
+import SolutionModal from "./components/modals/solution";
+import ContactModal from "./components/modals/contact";
+import SupportModal from "./components/modals/support";
+// import History from "../components/history";
+import axios from "axios";
 
 export default function Home() {
+  const [translated, setTranslated] = useState("");
+  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
+
+  useEffect(() => {
+    addView();
+  }, []);
+
+  const addView = async () => {
+    await axios.patch("http://localhost:3005/views/1");
+  };
+
+  const handleOnValueChanged = (event: any) => {
+    const value = event.target.value;
+    const words = value.split("");
+    console.log("words", words);
+    let text = "";
+    for (const word of words) {
+      text += calTranslated(word);
+    }
+
+    setTranslated(text);
+  };
+
+  const calTranslated = (value: string): string => {
+    const setting: { [key: string]: string } = {
+      // #region Eng to thai
+      "1": "ๅ",
+      "!": "+",
+      "2": "/",
+      "@": "๑",
+      "3": "-",
+      "#": "๒",
+      "4": "ภ",
+      $: "๓",
+      "5": "ถ",
+      "%": "๔",
+      "6": "ุ",
+      "^": "ู",
+      "7": "ึ",
+      "&": "฿",
+      "8": "ค",
+      "*": "๕",
+      "9": "ต",
+      "(": "๖",
+      "0": "จ",
+      ")": "๗",
+      "-": "ข",
+      _: "๘",
+      "=": "ช",
+      "+": "๙",
+      q: "ๆ",
+      Q: "๐",
+      w: "ไ",
+      W: '"',
+      e: "ำ",
+      E: "ฎ",
+      r: "พ",
+      R: "ฑ",
+      t: "ะ",
+      T: "ธ",
+      y: "ั",
+      Y: "ํ",
+      u: "ี",
+      U: "๊",
+      i: "ร",
+      I: "ณ",
+      o: "น",
+      O: "ฯ",
+      p: "ย",
+      P: "ญ",
+      "[": "บ",
+      "{": "ฐ",
+      "]": "ล",
+      "}": ",",
+      a: "ฟ",
+      A: "ฤ",
+      s: "ห",
+      S: "ฆ",
+      d: "ก",
+      D: "ฏ",
+      f: "ด",
+      F: "โ",
+      g: "เ",
+      G: "ฌ",
+      h: "้",
+      H: "็",
+      j: "่",
+      J: "๋",
+      k: "า",
+      K: "ษ",
+      l: "ส",
+      L: "ศ",
+      ";": "ว",
+      ":": "ซ",
+      "'": "ง",
+      '"': ".",
+      z: "ผ",
+      Z: "(",
+      x: "ป",
+      X: ")",
+      c: "แ",
+      C: "ฉ",
+      v: "อ",
+      V: "ฮ",
+      b: "ิ",
+      B: "ฺ",
+      n: "ื",
+      N: "์",
+      m: "ท",
+      M: "?",
+      ",": "ม",
+      "<": "ฒ",
+      ".": "ใ",
+      ">": "ฬ",
+      "/": "ฝ",
+      "?": "ฦ",
+      // #endregion
+
+      // #region Thai to eng
+      ๅ: "1",
+      "'+'": "!",
+      "'/'": "2",
+      "๑": "@",
+      "'-'": "3",
+      "๒": "#",
+      ภ: "4",
+      "๓": "$",
+      ถ: "5",
+      "๔": "%",
+      "ุ": "6",
+      "ู": "^",
+      "ึ": "7",
+      "฿": "&",
+      ค: "8",
+      "๕": "*",
+      ต: "9",
+      "๖": "(",
+      จ: "0",
+      "๗": ")",
+      ข: "-",
+      "๘": "_",
+      ช: "=",
+      "๙": "+",
+      ๆ: "q",
+      "๐": "Q",
+      ไ: "w",
+      "'๑'": "W",
+      ำ: "e",
+      ฎ: "E",
+      พ: "r",
+      ฑ: "R",
+      ะ: "t",
+      ธ: "T",
+      "ั": "y",
+      "ํ": "Y",
+      "ี": "u",
+      "๊": "U",
+      ร: "i",
+      ณ: "I",
+      น: "o",
+      ฯ: "O",
+      ย: "p",
+      ญ: "P",
+      บ: "[",
+      ฐ: "{",
+      ล: "]",
+      "','": "}",
+      ฟ: "a",
+      ฤ: "A",
+      ห: "s",
+      ฆ: "S",
+      ก: "d",
+      ฏ: "D",
+      ด: "f",
+      โ: "F",
+      เ: "g",
+      ฌ: "G",
+      "้": "h",
+      "็": "H",
+      "่": "j",
+      "๋": "J",
+      า: "k",
+      ษ: "K",
+      ส: "l",
+      ศ: "L",
+      ว: ";",
+      ซ: ":",
+      ง: "'",
+      "'.'": '"',
+      ผ: "z",
+      "'('": "Z",
+      ป: "x",
+      "')'": "X",
+      แ: "c",
+      ฉ: "C",
+      อ: "v",
+      ฮ: "V",
+      "ิ": "b",
+      "ฺ": "B",
+      "ื": "n",
+      "์": "N",
+      ท: "m",
+      "'?'": "M",
+      ม: ",",
+      ฒ: "<",
+      ใ: ".",
+      ฬ: ">",
+      ฝ: "/",
+      ฦ: "?",
+
+      // #endregion
+    };
+
+    return setting[value] || value;
+  };
+
+  const handleSolutionClicked = () => {
+    setIsSolutionModalOpen(true);
+  };
+
+  const handleClickedCloseSolutionModal = () => {
+    setIsSolutionModalOpen(false);
+  };
+
+  const handleContactClicked = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const handleClickedCloseContactModal = () => {
+    setIsContactModalOpen(false);
+  };
+
+  const handleSupportClicked = () => {
+    setIsSupportModalOpen(true);
+  };
+
+  const handleClickedCloseSupportModal = () => {
+    setIsSupportModalOpen(false);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="flex flex-col justify-between desktop:h-screen tablet:w-[100%]">
+      <div className="flex flex-col gap-10">
+        {/* Header  */}
+        <Header
+          onClick={handleContactClicked}
+          supportOnClick={handleSupportClicked}
+        ></Header>
+
+        {/* Translate and history desktop */}
+        <div className="flex flex-col font-bold text-white gap-10 desktop:flex tablet:hidden mobile:hidden">
+          <span className="flex justify-center text-xl">
+            แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
+          </span>
+          <div className="flex flex-wrap justify-center">
+            <Box
+              onChange={handleOnValueChanged}
+              placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"
+              bgColor="bg-header"
+              width="540px"
+              height="240px"
+            ></Box>
+            <div className="flex flex-col justify-center">
+              <Image
+                src={IconTranslate}
+                alt="arrow"
+                className="flex flex-col justify-center w-20 h-20"
+              ></Image>
+            </div>
+            <Box
+              placeholder="คำแปล"
+              value={translated}
+              readonly={true}
+              bgColor="bg-translated"
+              width="540px"
+              height="240px"
+            ></Box>
+          </div>
+
+          <div className="flex flex-wrap justify-center">
+            <span className="w-[540px]">{/* <History></History> */}</span>
+            <div className="flex flex-col justify-center w-20"></div>
+            <span className="w-[540px]"></span>
+          </div>
+        </div>
+
+        {/* Translate and history tablet */}
+        <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:flex mobile:hidden">
+          <span className="flex justify-center text-xl">
+            แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
+          </span>
+          <div className="flex flex-col flex-wrap content-center">
+            <Box
+              onChange={handleOnValueChanged}
+              placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"
+              bgColor="bg-header"
+              width="540px"
+              height="240px"
+            ></Box>
+            <div className="flex flex-row justify-center">
+              <Image
+                src={IconTranslateTablet}
+                alt="arrow"
+                className="flex flex-col justify-center w-20 h-20"
+              ></Image>
+            </div>
+            <Box
+              placeholder="คำแปล"
+              value={translated}
+              readonly={true}
+              bgColor="bg-translated"
+              width="540px"
+              height="240px"
+            ></Box>
+          </div>
+
+          <div className="flex flex-col justify-center items-center">
+            <span className="w-[540px]">{/* <History></History> */}</span>
+            <div className="flex flex-col justify-center w-20"></div>
+            <span className="w-[540px]"></span>
+          </div>
+        </div>
+
+        {/* Translate and history mobile */}
+        <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:hidden mobile:flex">
+          <span className="flex justify-center text-md text-center">
+            แก้ไขภาษาอังกฤษเป็นไทย หรือ <br />
+            จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
+          </span>
+          <div className="flex flex-col flex-wrap content-center">
+            <Box
+              onChange={handleOnValueChanged}
+              placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"
+              bgColor="bg-header"
+              width="320px"
+              height="240px"
+            ></Box>
+            <div className="flex flex-row justify-center">
+              <Image
+                src={IconTranslateTablet}
+                alt="arrow"
+                className="flex flex-col justify-center w-20 h-20"
+              ></Image>
+            </div>
+            <Box
+              placeholder="คำแปล"
+              value={translated}
+              readonly={true}
+              bgColor="bg-translated"
+              width="320px"
+              height="240px"
+            ></Box>
+          </div>
+
+          <div className="flex flex-wrap justify-center">
+            <span className="w-[320px]">{/* <History></History> */}</span>
+            <div className="flex flex-col justify-center w-20"></div>
+            <span className="w-[320px]"></span>
+          </div>
         </div>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      {/* Solution */}
+      <div className="flex flex-row justify-center p-10">
+        <Button
+          logo={Book}
+          text="วิธีใช้งาน"
+          onClick={handleSolutionClicked}
+        ></Button>
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {isSolutionModalOpen && (
+        <SolutionModal
+          onClick={handleClickedCloseSolutionModal}
+        ></SolutionModal>
+      )}
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+      {isContactModalOpen && (
+        <ContactModal onClick={handleClickedCloseContactModal}></ContactModal>
+      )}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      {isSupportModalOpen && (
+        <SupportModal onClick={handleClickedCloseSupportModal}></SupportModal>
+      )}
+    </div>
   );
 }

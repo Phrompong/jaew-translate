@@ -1,6 +1,6 @@
-interface History {}
+interface HistoryProps {}
 
-const History: React.FC<History> = ({}) => {
+const History: React.FC<HistoryProps> = ({}) => {
   return (
     <>
       <div className="flex flex-col gap-3">
