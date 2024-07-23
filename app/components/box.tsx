@@ -8,6 +8,7 @@ interface BoxProps {
   bgColor?: string;
   width?: string;
   height?: string;
+  border?: string;
 }
 
 const Box: React.FC<BoxProps> = ({
@@ -18,16 +19,18 @@ const Box: React.FC<BoxProps> = ({
   bgColor,
   width,
   height,
+  border,
 }) => {
   // w-[540px]
   // h-[240px]
+  border = border || "2";
   return (
     <>
       <textarea
         onKeyUp={onChange}
         value={value}
         placeholder={placeholder}
-        className={`p-4 p-5 border-2 w-[${width}] h-[${height}] rounded-lg focus:outline-none focus:border-borderBox ${bgColor}`}
+        className={`p-4 p-5 border w-[${width}] h-[${height}] rounded-lg focus:outline-none focus:border-borderBox ${bgColor}`}
         readOnly={readonly}
       ></textarea>
     </>
