@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Close from "../../../public/close.png";
-import PhoneModal from "../../../public/phone-modal.png";
-import Line from "../../../public/line.png";
-import Email from "../../../public/email.png";
-import World from "../../../public/world.png";
+import Close from "../../../public/close.svg";
+import PhoneModal from "../../../public/phone-modal.svg";
+import Line from "../../../public/line.svg";
+import Email from "../../../public/email.svg";
+import World from "../../../public/world.svg";
 
 interface ModalProps {
   onClick?: any;

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Close from "../../../public/close.png";
+import Close from "../../../public/close.svg";
 import Payment from "../../../public/payment.jpg";
 
 interface ModalProps {

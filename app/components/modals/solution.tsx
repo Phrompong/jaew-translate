@@ -2,9 +2,9 @@
 
 import Box from "../box";
 import Image from "next/image";
-import IconTranslate from "../../../public/icon-translate.png";
-import Close from "../../../public/close.png";
-import IconTranslateTablet from "../../../public/icon-translate-tablet.png";
+import IconTranslate from "../../../public/icon-translate.svg";
+import Close from "../../../public/close.svg";
+import IconTranslateTablet from "../../../public/icon-translate-tablet.svg";
 
 interface ModalProps {
   onClick?: any;

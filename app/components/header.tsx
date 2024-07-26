@@ -1,8 +1,8 @@
 "use client";
 
-import Logo from "../../public/logo.png";
-import Phone from "../../public/phone.png";
-import Heart from "../../public/heart.png";
+import Logo from "../../public/logo.svg";
+import Phone from "../../public/phone.svg";
+import Heart from "../../public/heart.svg";
 import Button from "./button";
 import Image from "next/image";
 
@@ -18,7 +18,7 @@ const Header: React.FC<ModalProps> = ({ onClick, supportOnClick }) => {
         <Image src={Logo} className="h-10 w-13" alt="Logo" />
 
         {/* Contact Us / Support Us */}
-        <div className="flex flex-column gap-5">
+        <div className="flex flex-column gap-5  h-full">
           <Button logo={Phone} text="Contact Us" onClick={onClick}></Button>
           <Button
             logo={Heart}

@@ -5,11 +5,14 @@ interface ButtonProps {
   logo: StaticImport;
   text: string;
   onClick: any;
+  imageHeight?: number;
+  imageWidth?: number;
 }
 
 const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
   return (
     <>
+      {/* Desktop */}
       <button
         type="button"
         className="flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center desktop:flex tablet:hidden mobile:hidden"
@@ -19,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
         <span className="text-base">{text}</span>
       </button>
 
+      {/* Tablet */}
       <button
         type="button"
         className="flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center desktop:hidden tablet:flex mobile:hidden"
@@ -40,11 +44,18 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
       ) : (
         <button
           type="button"
-          className="flex flex-col text-white border-2 p-1 rounded-lg gap-2 text-center items-center desktop:hidden tablet:hidden mobile:flex"
+          className="flex flex-col text-white border-2 p-1 rounded-lg gap-3 text-center items-center desktop:hidden tablet:hidden "
           onClick={onClick}
         >
-          <Image src={logo} alt="Logo" className="w-[20] h-[20]" />
-          <span className="text-xs">{text}</span>
+          <div className="h-5 p-1 mt-1">
+            <Image
+              src={logo}
+              alt="Logo"
+              height={text === "Contact Us" ? 19 : 16}
+            />
+          </div>
+
+          <span className="text-xs flex mb-1">{text}</span>
         </button>
       )}
     </>
