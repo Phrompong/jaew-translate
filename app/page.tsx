@@ -345,14 +345,14 @@ export default function Home() {
             แก้ไขภาษาอังกฤษเป็นไทย หรือ <br />
             จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
-          <div className="flex flex-col flex-wrap content-center">
+          <div className="flex flex-col flex-wrap content-stretch ml-5 mr-5">
             <Box
               onChange={handleOnValueChanged}
               placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"
               bgColor="bg-header"
-              width="320px"
               height="240px"
             ></Box>
+
             <div className="flex flex-row justify-center">
               <Image
                 src={IconTranslateTablet}
@@ -365,11 +365,9 @@ export default function Home() {
               value={translated}
               readonly={true}
               bgColor="bg-translated"
-              width="320px"
               height="240px"
             ></Box>
           </div>
-
           <div className="flex flex-wrap justify-center">
             <span className="w-[320px]">{/* <History></History> */}</span>
             <div className="flex flex-col justify-center w-20"></div>
