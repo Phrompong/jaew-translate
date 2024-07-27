@@ -20,11 +20,7 @@ const Header: React.FC<ModalProps> = ({ onClick, supportOnClick }) => {
         {/* Contact Us / Support Us */}
         <div className="flex flex-column gap-5  h-full">
           <Button logo={Phone} text="Contact Us" onClick={onClick}></Button>
-          <Button
-            logo={Heart}
-            text="Support Us"
-            onClick={supportOnClick}
-          ></Button>
+          <Button logo={Heart} text="Donate" onClick={supportOnClick}></Button>
         </div>
       </div>
     </>

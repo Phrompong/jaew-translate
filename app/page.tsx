@@ -15,7 +15,7 @@ import axios from "axios";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
-  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(true);
+  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 

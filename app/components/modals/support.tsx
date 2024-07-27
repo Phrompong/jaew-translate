@@ -23,7 +23,7 @@ const SupportModal: React.FC<ModalProps> = ({ onClick }) => {
                   onClick={onClick}
                 ></Image>
               </div>
-              <span className="text-lg text-center">Support Us</span>{" "}
+              <span className="text-lg text-center">Donate</span>{" "}
             </div>
 
             {/* Content */}
