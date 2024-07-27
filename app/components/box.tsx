@@ -30,7 +30,7 @@ const Box: React.FC<BoxProps> = ({
         onKeyUp={onChange}
         value={value}
         placeholder={placeholder}
-        className={`p-4 p-5 border w-[${width}] h-[${height}] rounded-lg focus:outline-none focus:border-borderBox ${bgColor}`}
+        className={`p-4 p-5 border w-[${width}] h-[${height}] rounded-lg focus:outline-none ${bgColor}`}
         readOnly={readonly}
       ></textarea>
     </>

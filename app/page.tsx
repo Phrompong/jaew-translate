@@ -30,7 +30,6 @@ export default function Home() {
   const handleOnValueChanged = (event: any) => {
     const value = event.target.value;
     const words = value.split("");
-    console.log("words", words);
     let text = "";
     for (const word of words) {
       text += calTranslated(word);
