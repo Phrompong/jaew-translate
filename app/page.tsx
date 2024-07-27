@@ -24,7 +24,7 @@ export default function Home() {
   }, []);
 
   const addView = async () => {
-    // await axios.patch("https://jawvis.org/views/jaew-translate");
+    await axios.patch("https://jawvis.org/views/jaew-translate");
   };
 
   const handleOnValueChanged = (event: any) => {
