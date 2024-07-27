@@ -14,7 +14,7 @@ interface ModalProps {
 const ContactModal: React.FC<ModalProps> = ({ onClick }) => {
   return (
     <div className="fixed z-10 pt-24 w-full h-full overflow-auto bg-black bg-opacity-40 text-white">
-      <div className="relative top-[20%]">
+      <div className="flex flex-col justify-center">
         <div className="flex justify-center">
           <div className="flex flex-col border lg:w-[40%] md:w-[90%] p-10 rounded-lg bg-modal gap-10">
             <div className="flex flex-col justify-center">

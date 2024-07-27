@@ -15,7 +15,7 @@ import axios from "axios";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
-  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
+  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
@@ -24,7 +24,7 @@ export default function Home() {
   }, []);
 
   const addView = async () => {
-    await axios.patch("http://backend-service/views/jaew-translate");
+    // await axios.patch("https://jawvis.org/views/jaew-translate");
   };
 
   const handleOnValueChanged = (event: any) => {

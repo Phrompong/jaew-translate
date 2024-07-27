@@ -15,9 +15,9 @@ const SolutionModal: React.FC<ModalProps> = ({ onClick }) => {
     <>
       {/* Desktop Tablet */}
       <div className="fixed z-10 pt-24 w-full h-full overflow-auto bg-black bg-opacity-40 text-white desktop:flex tablet:hidden mobile:hidden">
-        <div className="relative top-[10%]">
+        <div className="flex flex-col justify-center">
           <div className="flex justify-center">
-            <div className="flex flex-col border lg:w-[60%] md:w-[90%] p-10 rounded-lg bg-modal gap-10 md:hidden lg:flex">
+            <div className="flex flex-col border lg:w-[60%] md:w-[90%] p-10 rounded-lg bg-modal gap-10">
               <div className="flex flex-col justify-center">
                 <div className="flex flex-row justify-end">
                   <Image
@@ -68,7 +68,7 @@ const SolutionModal: React.FC<ModalProps> = ({ onClick }) => {
 
       {/* Mobile */}
       <div className="fixed z-10 pt-24 w-[full] h-full overflow-auto bg-black bg-opacity-40 text-white md:flex lg:hidden">
-        <div className="relative top-[10%]">
+        <div className="flex flex-col justify-center">
           <div className="flex justify-center">
             <div className="flex flex-col border w-[100%] p-5 rounded-lg bg-modal gap-10 m-1">
               <div className="flex flex-col justify-center">
