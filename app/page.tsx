@@ -7,21 +7,19 @@ import Image from "next/image";
 import IconTranslate from "../public/icon-translate.svg";
 import IconTranslateTablet from "../public/icon-translate-tablet.svg";
 import { useEffect, useState } from "react";
-import ContactModal from "./components/modals/contact";
-import SupportModal from "./components/modals/support";
 // import History from "../components/history";
 import axios from "axios";
 import Modal from "./components/modals/modal";
 import SolutionMobile from "./components/modals/solution/mobile";
 import SolutionDesktop from "./components/modals/solution/desktop";
 import ContactDesktop from "./components/modals/contact/desktop";
+import SupportDesktop from "./components/modals/support/desktop";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
   const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
-  const [isTestModal, setIsTestModal] = useState(true);
 
   useEffect(() => {
     addView();
@@ -407,7 +405,12 @@ export default function Home() {
       )}
 
       {isSupportModalOpen && (
-        <SupportModal onClick={handleClickedCloseSupportModal}></SupportModal>
+        <Modal
+          title="Donate"
+          renderDesktop={SupportDesktop}
+          renderMobile={SupportDesktop}
+          onClick={handleClickedCloseSupportModal}
+        ></Modal>
       )}
     </div>
   );
