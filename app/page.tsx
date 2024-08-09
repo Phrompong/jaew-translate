@@ -14,6 +14,7 @@ import SolutionMobile from "./components/modals/solution/mobile";
 import SolutionDesktop from "./components/modals/solution/desktop";
 import ContactDesktop from "./components/modals/contact/desktop";
 import SupportDesktop from "./components/modals/support/desktop";
+import { EnumStyle } from "./components/util/constant";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
@@ -267,7 +268,9 @@ export default function Home() {
         ></Header>
 
         {/* Translate and history desktop */}
-        <div className="flex flex-col font-bold text-white gap-10 desktop:flex tablet:hidden mobile:hidden">
+        <div
+          className={`flex flex-col font-bold text-white gap-10 ${EnumStyle.Desktop}`}
+        >
           <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
@@ -304,7 +307,9 @@ export default function Home() {
         </div>
 
         {/* Translate and history tablet */}
-        <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:flex mobile:hidden">
+        <div
+          className={`flex flex-col font-bold text-white gap-10 ${EnumStyle.Tablet}`}
+        >
           <span className="flex justify-center text-xl">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
@@ -341,7 +346,9 @@ export default function Home() {
         </div>
 
         {/* Translate and history mobile */}
-        <div className="flex flex-col font-bold text-white gap-10 desktop:hidden tablet:hidden mobile:flex">
+        <div
+          className={`flex flex-col font-bold text-white gap-10 ${EnumStyle.Mobile}`}
+        >
           <span className="flex justify-center text-md text-center">
             แก้ไขภาษาอังกฤษเป็นไทย หรือ <br />
             จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา

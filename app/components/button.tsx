@@ -1,5 +1,6 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
+import { EnumStyle } from "./util/constant";
 
 interface ButtonProps {
   logo: StaticImport;
@@ -15,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
       {/* Desktop */}
       <button
         type="button"
-        className="flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center desktop:flex tablet:hidden mobile:hidden"
+        className={`flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center ${EnumStyle.Desktop}`}
         onClick={onClick}
       >
         <Image src={logo} alt="Logo" />
@@ -25,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
       {/* Tablet */}
       <button
         type="button"
-        className="flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center desktop:hidden tablet:flex mobile:hidden"
+        className={`flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center ${EnumStyle.Tablet}`}
         onClick={onClick}
       >
         <Image src={logo} alt="Logo" />
@@ -35,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
       {text === "วิธีใช้งาน" ? (
         <button
           type="button"
-          className="flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center desktop:hidden tablet:hidden mobile:flex"
+          className={`flex flex-column text-white border-2 p-3 rounded-full gap-2 text-center items-center ${EnumStyle.Mobile}`}
           onClick={onClick}
         >
           <Image src={logo} alt="Logo" />
@@ -44,7 +45,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
       ) : (
         <button
           type="button"
-          className="flex flex-col text-white border-2 p-1 rounded-lg gap-3 text-center items-center desktop:hidden tablet:hidden "
+          className={`flex flex-col text-white border-2 p-1 rounded-lg gap-3 text-center items-center ${EnumStyle.Hidden}`}
           onClick={onClick}
         >
           <div className="h-5 p-1 mt-1">
