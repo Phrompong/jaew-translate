@@ -4,10 +4,11 @@ import { EnumStyle } from "../util/constant";
 
 const Modal: React.FC<{
   renderDesktop: any;
+  renderTablet: any;
   renderMobile: any;
   title: string;
   onClick: any;
-}> = ({ renderDesktop, renderMobile, title, onClick }) => {
+}> = ({ renderDesktop, renderTablet, renderMobile, title, onClick }) => {
   return (
     <>
       <div
@@ -27,6 +28,29 @@ const Modal: React.FC<{
                 </div>
                 <span className="text-lg text-center">{title}</span>
                 {renderDesktop && renderDesktop()}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`fixed z-10 pt-24 w-full h-full overflow-auto bg-black bg-opacity-40 text-white ${EnumStyle.Tablet}`}
+      >
+        <div className="flex flex-col justify-center w-full h-full">
+          <div className="flex justify-center">
+            <div className="flex flex-col border lg:w-[full] md:w-[90%] p-10 rounded-lg bg-modal gap-10 mx-[10]">
+              <div className="flex flex-col justify-center gap-5">
+                <div className="flex flex-row justify-end">
+                  <Image
+                    className="cursor-pointer w-4 h-4"
+                    src={Close}
+                    alt="close"
+                    onClick={onClick}
+                  ></Image>
+                </div>
+                <span className="text-2xl text-center">{title}</span>
+                {renderTablet && renderTablet()}
               </div>
             </div>
           </div>

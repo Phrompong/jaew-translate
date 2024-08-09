@@ -18,7 +18,7 @@ import { EnumStyle } from "./components/util/constant";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
-  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(true);
+  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
@@ -397,6 +397,7 @@ export default function Home() {
         <Modal
           title="วิธีใช้งาน"
           renderDesktop={SolutionDesktop}
+          renderTablet={SolutionDesktop}
           renderMobile={SolutionMobile}
           onClick={handleClickedCloseSolutionModal}
         ></Modal>
@@ -406,6 +407,7 @@ export default function Home() {
         <Modal
           title="วิธีใช้งาน"
           renderDesktop={ContactDesktop}
+          renderTablet={ContactDesktop}
           renderMobile={ContactDesktop}
           onClick={handleClickedCloseContactModal}
         ></Modal>
@@ -415,6 +417,7 @@ export default function Home() {
         <Modal
           title="Donate"
           renderDesktop={SupportDesktop}
+          renderTablet={SupportDesktop}
           renderMobile={SupportDesktop}
           onClick={handleClickedCloseSupportModal}
         ></Modal>

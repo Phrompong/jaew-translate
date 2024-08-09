@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       screens: {
         mobile: { min: "0px", max: "767px" },
-        tablet: { min: "768px", max: "1024px" },
-        desktop: { min: "1025px", max: "1440px" },
+        tablet: { min: "768px", max: "1080px" },
+        desktop: { min: "1081px", max: "1440px" },
         desktopLarge: { min: "1441px" },
       },
       backgroundImage: {

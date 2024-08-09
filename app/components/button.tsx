@@ -45,7 +45,7 @@ const Button: React.FC<ButtonProps> = ({ logo, text, onClick }) => {
       ) : (
         <button
           type="button"
-          className={`flex flex-col text-white border-2 p-1 rounded-lg gap-3 text-center items-center ${EnumStyle.Hidden}`}
+          className={`flex flex-col text-white border-2 p-1 rounded-lg gap-3 text-center items-center ${EnumStyle.Mobile}`}
           onClick={onClick}
         >
           <div className="h-5 p-1 mt-1">
