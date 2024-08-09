@@ -7,17 +7,21 @@ import Image from "next/image";
 import IconTranslate from "../public/icon-translate.svg";
 import IconTranslateTablet from "../public/icon-translate-tablet.svg";
 import { useEffect, useState } from "react";
-import SolutionModal from "./components/modals/solution";
 import ContactModal from "./components/modals/contact";
 import SupportModal from "./components/modals/support";
 // import History from "../components/history";
 import axios from "axios";
+import Modal from "./components/modals/modal";
+import SolutionMobile from "./components/modals/solution/mobile";
+import SolutionDesktop from "./components/modals/solution/desktop";
+import ContactDesktop from "./components/modals/contact/desktop";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
   const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
+  const [isTestModal, setIsTestModal] = useState(true);
 
   useEffect(() => {
     addView();
@@ -385,13 +389,21 @@ export default function Home() {
       </div>
 
       {isSolutionModalOpen && (
-        <SolutionModal
+        <Modal
+          title="วิธีใช้งาน"
+          renderDesktop={SolutionDesktop}
+          renderMobile={SolutionMobile}
           onClick={handleClickedCloseSolutionModal}
-        ></SolutionModal>
+        ></Modal>
       )}
 
       {isContactModalOpen && (
-        <ContactModal onClick={handleClickedCloseContactModal}></ContactModal>
+        <Modal
+          title="วิธีใช้งาน"
+          renderDesktop={ContactDesktop}
+          renderMobile={ContactDesktop}
+          onClick={handleClickedCloseContactModal}
+        ></Modal>
       )}
 
       {isSupportModalOpen && (
