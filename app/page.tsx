@@ -15,7 +15,7 @@ import axios from "axios";
 
 export default function Home() {
   const [translated, setTranslated] = useState("");
-  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(false);
+  const [isSolutionModalOpen, setIsSolutionModalOpen] = useState(true);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
@@ -344,7 +344,7 @@ export default function Home() {
             แก้ไขภาษาอังกฤษเป็นไทย หรือ <br />
             จากไทยเป็นอังกฤษ เวลาลืมเปลี่ยนภาษา
           </span>
-          <div className="flex flex-col flex-wrap content-stretch ml-5 mr-5">
+          <div className="flex flex-col flex-wrap ml-5 mr-5">
             <Box
               onChange={handleOnValueChanged}
               placeholder="คัดลอก / พิมพ์ ข้อความหรือตัวอังษรที่ลืมเปลี่ยนภาษาลงในนี้"

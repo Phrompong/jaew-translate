@@ -62,7 +62,7 @@ const ContactModal: React.FC<ModalProps> = ({ onClick }) => {
                   <Link
                     key={index}
                     href={item.href}
-                    className="flex flex-col items-center border-2 p-5 rounded-lg gap-3 bg-translated w-[100%]"
+                    className="flex flex-col items-center border-2 p-5 rounded-lg gap-3 bg-translated w-[100%] hover:bg-gray-500"
                   >
                     <Image
                       className="cursor-pointer w-8 h-8"
